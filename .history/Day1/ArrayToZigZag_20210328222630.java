@@ -12,28 +12,22 @@ public class ArrayToZigZag {
     public static void fun(int[] arr) {
         int mid = (arr.length + 1) / 2;
         int median = QuickSelect(arr, 0, arr.length - 1, mid);
+        for (int ele : arr)
+            System.out.print(ele + ", ");
+        System.out.println();
+        System.out.println(median);
         int[] temp = new int[arr.length];
-
-        int s = 0;
-        int e = arr.length - 1;
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < median)
-                temp[s++] = arr[i];
-            else if (arr[i] > median)
-                temp[e--] = arr[i];
+        for (int i = 0; i < arr.length; i++)
+            temp[i] = arr[i];
+        int j = 0;
+        for (int i = 0; i < mid - 1; i++) {
+            arr[j] = temp[i];
+            j += 2;
         }
-        while (s < mid)
-            temp[s++] = median;
-        while (e >= mid)
-            temp[e--] = median;
-
-        s = mid - 1;
-        e = arr.length - 1;
-        for (int i = 0; i < arr.length; i++) {
-            if (i % 2 == 0)
-                arr[i] = temp[s--];
-            else
-                arr[i] = temp[e--];
+        j = 1;
+        for (int i = mid - 1; i < arr.length - 1; i++) {
+            arr[j] = temp[i];
+            j += 2;
         }
     }
 

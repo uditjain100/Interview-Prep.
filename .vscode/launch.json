@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch IncreasingSubsequences",
+            "request": "launch",
+            "mainClass": "IncreasingSubsequences",
+            "projectName": "Interview Prep_decc6666"
+        },
+        {
+            "type": "java",
             "name": "Launch Current File",
             "request": "launch",
             "mainClass": "${file}"

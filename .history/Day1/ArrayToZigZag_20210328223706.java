@@ -3,7 +3,7 @@ public class ArrayToZigZag {
     // *** Wiggle Sort II
 
     public static void main(String[] args) {
-        int[] arr = { 1, 4, 3, 4, 1, 2, 1, 3, 1, 3, 2, 3, 3 };
+        int[] arr = { 1, 1, 2, 1, 2, 2, 1 };
         fun(arr);
         for (int ele : arr)
             System.out.print(ele + ", ");
@@ -24,7 +24,7 @@ public class ArrayToZigZag {
         }
         while (s < mid)
             temp[s++] = median;
-        while (e >= mid)
+        while (e < mid)
             temp[e--] = median;
 
         s = mid - 1;
