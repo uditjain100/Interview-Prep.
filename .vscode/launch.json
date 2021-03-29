@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch PairsDiffK",
+            "request": "launch",
+            "mainClass": "PairsDiffK",
+            "projectName": "Interview Prep_decc6666"
+        },
+        {
+            "type": "java",
+            "name": "Launch KPairsDiffN",
+            "request": "launch",
+            "mainClass": "KPairsDiffN",
+            "projectName": "Interview Prep_decc6666"
+        },
+        {
+            "type": "java",
             "name": "Launch IncreasingSubsequences",
             "request": "launch",
             "mainClass": "IncreasingSubsequences",
