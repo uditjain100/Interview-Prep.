@@ -1,0 +1,47 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.PriorityQueue;
+
+public class KPairSmallestSum {
+
+    public static class Pair {
+        int a;
+        int b;
+        int sum;
+
+        public Pair(int a, int b) {
+            this.a = a;
+            this.b = b;
+            this.sum = this.a + this.b;
+        }
+    }
+
+    public static void main(String[] args) {
+        int arr1[] = { 1, 3, 11 };
+        int arr2[] = { 2, 4, 8 };
+
+        fun(arr1, arr2, 4);
+    }
+
+    public static void fun(int[] arr1, int[] arr2, int k) {
+
+        PriorityQueue<Pair> pq = new PriorityQueue<>((a, b) -> a.sum - b.sum);
+
+        for (int i = 0; i < arr1.length && i < k; i++)
+            for (int j = 0; j < arr2.length && j < k; j++)
+                pq.add(new Pair(arr1[i], arr2[j]));
+
+        List<List<Integer>> res = new ArrayList<>();
+
+        while (k-- > 0 && !pq.isEmpty()) {
+            Pair p = pq.remove();
+            ArrayList<Integer> list = new ArrayList<>();
+            list.add(p.a);
+            list.add(p.b);
+            res.add(list);
+        }
+        System.out.println(res);
+
+    }
+}

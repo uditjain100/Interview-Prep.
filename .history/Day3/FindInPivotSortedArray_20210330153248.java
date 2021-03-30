@@ -1,0 +1,30 @@
+public class FindInPivotSortedArray {
+    public static void main(String[] args) {
+
+    }
+
+    public static int fun(int[] arr, int ele) {
+
+        int pivotPosition = findPivot();
+        int res = binarySearch(arr, 0, pivotPosition, ele);
+        if (res == -1)
+            res = binarySearch(arr, pivotPosition, arr.length - 1, ele);
+        return res;
+    }
+
+    public static int findPivot(int[] arr) {
+
+    }
+
+    public static int binarySearch(int[] arr, int l, int r, int ele) {
+        if (l > r)
+            return -1;
+        int mid = arr.length / 2;
+        if (arr[mid] > ele)
+            return binarySearch(arr, l, mid - 1, ele);
+        else if (arr[mid] < ele)
+            return binarySearch(arr, mid + 1, r, ele);
+        else
+            return mid;
+    }
+}
