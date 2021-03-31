@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ConstructingGenericTree",
+            "request": "launch",
+            "mainClass": "ConstructingGenericTree",
+            "projectName": "Interview Prep_decc6666"
+        },
+        {
+            "type": "java",
             "name": "Launch PairsDiffK",
             "request": "launch",
             "mainClass": "PairsDiffK",
