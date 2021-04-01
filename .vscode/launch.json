@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch LCRS",
+            "request": "launch",
+            "mainClass": "LCRS",
+            "projectName": "Interview Prep_decc6666"
+        },
+        {
+            "type": "java",
+            "name": "Launch Dia",
+            "request": "launch",
+            "mainClass": "Dia",
+            "projectName": "Interview Prep_decc6666"
+        },
+        {
+            "type": "java",
+            "name": "Launch GenericTree",
+            "request": "launch",
+            "mainClass": "GenericTree",
+            "projectName": "Interview Prep_decc6666"
+        },
+        {
+            "type": "java",
+            "name": "Launch Diameter",
+            "request": "launch",
+            "mainClass": "Diameter",
+            "projectName": "Interview Prep_decc6666"
+        },
+        {
+            "type": "java",
             "name": "Launch ConstructingGenericTree",
             "request": "launch",
             "mainClass": "ConstructingGenericTree",
