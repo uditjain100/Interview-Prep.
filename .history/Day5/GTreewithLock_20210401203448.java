@@ -77,24 +77,7 @@ public class GTreewithLock {
         }
 
         node.isLocked = true;
-
-        temp = node.parent;
-        while (temp != null) {
-            temp.lockedChilds++;
-            temp = temp.parent;
-        }
         return true;
-    }
-
-    public static void unlock(Node node) {
-        node.isLocked = false;
-
-        Node temp = node.parent;
-        while (temp != null) {
-            temp.lockedChilds--;
-            temp = temp.parent;
-        }
-
     }
 
 }

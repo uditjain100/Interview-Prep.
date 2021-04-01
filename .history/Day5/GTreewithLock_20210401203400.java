@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Stack;
 
 public class GTreewithLock {
 
@@ -26,7 +25,7 @@ public class GTreewithLock {
     }
 
     public GTreewithLock(int[] preOrder) {
-        root = constructor(preOrder);
+        root = construct(preOrder);
     }
 
     public static Node constructor(int[] preOrder) {
@@ -61,7 +60,7 @@ public class GTreewithLock {
             display(child);
     }
 
-    public static boolean isLock(Node node) {
+    public static isLock(Node node){
         return node.isLocked;
     }
 
@@ -77,24 +76,7 @@ public class GTreewithLock {
         }
 
         node.isLocked = true;
-
-        temp = node.parent;
-        while (temp != null) {
-            temp.lockedChilds++;
-            temp = temp.parent;
-        }
         return true;
-    }
-
-    public static void unlock(Node node) {
-        node.isLocked = false;
-
-        Node temp = node.parent;
-        while (temp != null) {
-            temp.lockedChilds--;
-            temp = temp.parent;
-        }
-
     }
 
 }

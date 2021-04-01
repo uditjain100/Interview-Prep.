@@ -86,14 +86,15 @@ public class GTreewithLock {
         return true;
     }
 
-    public static void unlock(Node node) {
+    public static boolean unlock(Node node) {
         node.isLocked = false;
 
-        Node temp = node.parent;
+        temp = node.parent;
         while (temp != null) {
             temp.lockedChilds--;
             temp = temp.parent;
         }
+        return true;
 
     }
 
