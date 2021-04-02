@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch BinaryTreeClone",
+            "request": "launch",
+            "mainClass": "BinaryTreeClone",
+            "projectName": "Interview Prep_decc6666"
+        },
+        {
+            "type": "java",
             "name": "Launch LCRS",
             "request": "launch",
             "mainClass": "LCRS",
