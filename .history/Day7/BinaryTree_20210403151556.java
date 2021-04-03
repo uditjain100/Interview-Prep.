@@ -34,6 +34,27 @@ public class BinaryTree {
         return nn;
     }
 
+    public static void display() {
+        display(root);
+    }
+
+    private static void display(Node node) {
+        if (node == null)
+            return;
+
+        String str = node.data + " => ";
+
+        if (node.left != null)
+            str += node.left.data + ", ";
+        if (node.right != null)
+            str += node.right.data + ", ";
+
+        System.out.println(str);
+
+        display(node.left);
+        display(node.right);
+    }
+
     public static ArrayList<Integer> preOrder() {
         ArrayList<Integer> res = new ArrayList<>();
         preOrder(root, res);
@@ -60,41 +81,6 @@ public class BinaryTree {
         inOrder(node.left, list);
         list.add(node.data);
         inOrder(node.right, list);
-    }
-
-    public static ArrayList<Integer> postOrder() {
-        ArrayList<Integer> res = new ArrayList<>();
-        postOrder(root, res);
-        return res;
-    }
-
-    public static void postOrder(Node node, ArrayList<Integer> list) {
-        if (node == null)
-            return;
-        postOrder(node.left, list);
-        postOrder(node.right, list);
-        list.add(node.data);
-    }
-
-    public static void display() {
-        display(root);
-    }
-
-    private static void display(Node node) {
-        if (node == null)
-            return;
-
-        String str = node.data + " => ";
-
-        if (node.left != null)
-            str += node.left.data + ", ";
-        if (node.right != null)
-            str += node.right.data + ", ";
-
-        System.out.println(str);
-
-        display(node.left);
-        display(node.right);
     }
 
     public static void main(String[] args) {

@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch morrisinOrder",
+            "request": "launch",
+            "mainClass": "morrisinOrder",
+            "projectName": "Interview Prep_decc6666"
+        },
+        {
+            "type": "java",
             "name": "Launch BinaryTreeClone",
             "request": "launch",
             "mainClass": "BinaryTreeClone",

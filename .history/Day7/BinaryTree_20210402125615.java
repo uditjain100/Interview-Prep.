@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class BinaryTree {
 
     public static class Node {
@@ -32,48 +30,6 @@ public class BinaryTree {
         nn.left = constructor(preOrder);
         nn.right = constructor(preOrder);
         return nn;
-    }
-
-    public static ArrayList<Integer> preOrder() {
-        ArrayList<Integer> res = new ArrayList<>();
-        preOrder(root, res);
-        return res;
-    }
-
-    public static void preOrder(Node node, ArrayList<Integer> list) {
-        if (node == null)
-            return;
-        list.add(node.data);
-        preOrder(node.left, list);
-        preOrder(node.right, list);
-    }
-
-    public static ArrayList<Integer> inOrder() {
-        ArrayList<Integer> res = new ArrayList<>();
-        inOrder(root, res);
-        return res;
-    }
-
-    public static void inOrder(Node node, ArrayList<Integer> list) {
-        if (node == null)
-            return;
-        inOrder(node.left, list);
-        list.add(node.data);
-        inOrder(node.right, list);
-    }
-
-    public static ArrayList<Integer> postOrder() {
-        ArrayList<Integer> res = new ArrayList<>();
-        postOrder(root, res);
-        return res;
-    }
-
-    public static void postOrder(Node node, ArrayList<Integer> list) {
-        if (node == null)
-            return;
-        postOrder(node.left, list);
-        postOrder(node.right, list);
-        list.add(node.data);
     }
 
     public static void display() {
