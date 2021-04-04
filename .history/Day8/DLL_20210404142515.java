@@ -1,0 +1,46 @@
+public class DLL {
+
+    public static BinaryTree.Node head = null;
+    public static BinaryTree.Node prev = null;
+
+    public static void Dll(BinaryTree.Node node) {
+        if (node == null)
+            return;
+
+        Dll(node.left);
+
+        if (head = null)
+            head = node;
+        else {
+            prev.right = node;
+            node.left = prev;
+        }
+
+        prev = node;
+
+        Dll(node.right);
+    }
+
+    public static void DllDisplay(BinaryTree.Node node) {
+        Dll(node);
+        BinaryTree.Node curr = head;
+        while (curr != null) {
+            System.out.print(curr.data + ", ");
+            curr = curr.right;
+        }
+    }
+
+    public static void CircularDllDisplay(BinaryTree.Node node) {
+        Dll(node);
+        prev.right = head;
+        head.left = prev;
+        BinaryTree.Node curr = head;
+        System.out.print(curr.data + ", ");
+        curr = curr.right;
+        while (curr != head) {
+            System.out.print(curr.data + ", ");
+            curr = curr.right;
+        }
+    }
+
+}
