@@ -1,22 +1,22 @@
 import java.util.ArrayList;
 
-public class BinaryTree {
+public class BinaryTreeIn {
 
     public static class Node {
         int data;
         Node left;
         Node right;
+        Node next;
 
         public Node(int data) {
             this.data = data;
-            this.left = null;
-            this.right = null;
+            this.left = this.right = this.next = null;
         }
     }
 
     public static Node root;
 
-    public BinaryTree(int[] preOrder) {
+    public BinaryTreeIn(int[] preOrder) {
         root = constructor(preOrder);
     }
 
@@ -34,25 +34,14 @@ public class BinaryTree {
         return nn;
     }
 
-    public static void display() {
-        display(root);
+    public static int size() {
+        return size(root);
     }
 
-    private static void display(Node node) {
+    private static int size(Node node) {
         if (node == null)
-            return;
-
-        String str = node.data + " => ";
-
-        if (node.left != null)
-            str += node.left.data + ", ";
-        if (node.right != null)
-            str += node.right.data + ", ";
-
-        System.out.println(str);
-
-        display(node.left);
-        display(node.right);
+            return 0;
+        return size(node.left) + size(node.right) + 1;
     }
 
     public static ArrayList<Integer> preOrder() {
@@ -97,11 +86,45 @@ public class BinaryTree {
         list.add(node.data);
     }
 
+    public static void display() {
+        display(root);
+    }
+
+    private static void display(Node node) {
+        if (node == null)
+            return;
+
+        String str = node.data + " => ";
+
+        if (node.left != null)
+            str += node.left.data + ", ";
+        if (node.right != null)
+            str += node.right.data + ", ";
+
+        System.out.println(str);
+
+        display(node.left);
+        display(node.right);
+    }
+
+    public static void populateInOrderSuccesor() {
+        populateInOrderSucc(root, null);
+    }
+
+    public static Node leftMostOfRight()
+
+    public static void populateInOrderSucc(Node node, Node parent) {
+        if(node == null) return;
+
+        if(node.right == null && parent == null) return;
+
+        int leftMost = 
+
+
+    }
+
     public static void main(String[] args) {
 
-        int[] preOrder = { 10, 20, 40, -1, -1, 50, 80, -1, -1, 90, -1, -1, 30, 60, 100, -1, -1, -1, 70, 110, -1, -1,
-                120, -1, -1 };
-        BinaryTree tree = new BinaryTree(preOrder);
-        tree.display();
     }
+
 }

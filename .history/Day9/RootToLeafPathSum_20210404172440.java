@@ -1,0 +1,20 @@
+public class RootToLeafPathSum {
+
+    public static boolean checkpathsum(BinaryTree.Node root, int target) {
+        return check(root, target, 0);
+    }
+
+    public static boolean check(BinaryTree.Node node, int target, int sum) {
+        if (node == null)
+            return false;
+
+        if (node.left == null && node.right == null && sum + node.data == target)
+            return true;
+
+        boolean lr = check(root.left, target, sum + node.data);
+        boolean rr = check(root.right, target, sum + node.data);
+
+        return lr || rr;
+    }
+
+}

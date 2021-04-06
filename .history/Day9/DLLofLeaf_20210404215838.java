@@ -1,0 +1,23 @@
+public class DLLofLeaf {
+
+    public static BinaryTree.Node Dllhead = null;
+    public static BinaryTree.Node Dllprev = null;
+
+    public static void DLL(BinaryTree.Node node) {
+        DLL(node, null, false);
+    }
+
+    public static void DLL(BinaryTree.Node node, BinaryTree.Node parent, boolean isLeft) {
+
+        if (node == null)
+            return;
+        if (node.left == null && node.right == null) {
+            if (Dllhead == null) {
+                Dllhead = node;
+
+            }
+        }
+
+    }
+
+}
