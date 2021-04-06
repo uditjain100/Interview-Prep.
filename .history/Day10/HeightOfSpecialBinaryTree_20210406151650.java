@@ -1,0 +1,46 @@
+public class HeightOfSpecialBinaryTree {
+
+    public static BinaryTree.Node DLLhead = null;
+    public static BinaryTree.Node DLLprev = null;
+
+    public static void circularLeafDLL(BinaryTree.Node node) {
+        DLLleaf(node);
+        DLLprev.right = DLLhead;
+        DLLhead.left = DLLprev;
+    }
+
+    public static void DLLleaf(BinaryTree.Node node) {
+        if (node == null)
+            return;
+        if (node.left == null && node.right == null) {
+            if (DLLhead == null)
+                DLLhead = node;
+            else {
+                DLLprev.right = node;
+                node.left = DLLprev;
+            }
+            DLLprev = node;
+        }
+
+        DLLleaf(node.left);
+        DLLleaf(node.right);
+    }
+
+    public static void display(BinaryTree.Node node) {
+        if (node == null)
+            return;
+
+        String str = node.data + " => ";
+        if (node.left != null)
+            str += node.left.data + ", ";
+        if (node.right != null)
+            str += node.right.data + ", ";
+
+        if (node.right != null && node.right.left != null && node.right.left == node)
+            return;
+
+        display(node.left);
+        display(node.right);
+    }
+
+}
