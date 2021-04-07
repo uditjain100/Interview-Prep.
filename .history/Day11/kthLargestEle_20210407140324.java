@@ -1,0 +1,21 @@
+public class kthLargestEle {
+
+    public static void count = 0;
+
+    public static int getKthLargestElemwnt(BinarySearchTree.Node node, int k) {
+        get(node, k);
+    }
+
+    public static void get(BinarySearchTree.Node node, int k) {
+        if (node == null)
+            return;
+
+        if (count == k)
+
+            get(node.right, k);
+        count++;
+        get(node.left, k);
+
+    }
+
+}

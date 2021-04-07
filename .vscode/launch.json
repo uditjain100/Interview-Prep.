@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch kthLargestEle",
+            "request": "launch",
+            "mainClass": "kthLargestEle",
+            "projectName": "Interview Prep_decc6666"
+        },
+        {
+            "type": "java",
             "name": "Launch BinaryTreeMatrix",
             "request": "launch",
             "mainClass": "BinaryTreeMatrix",
