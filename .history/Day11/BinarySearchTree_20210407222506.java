@@ -135,16 +135,6 @@ public class BinarySearchTree {
         }
     }
 
-    public static int size() {
-        return size(root);
-    }
-
-    public static int size(Node node) {
-        if (node == null)
-            return 0;
-        return size(node.left) + size(node.right) + 1;
-    }
-
     public static void main(String[] args) {
         int[] pre = new int[] { 10, 5, 1, 7, 40, 50 };
         BinarySearchTree tree = new BinarySearchTree(pre);

@@ -135,10 +135,6 @@ public class BinarySearchTree {
         }
     }
 
-    public static int size() {
-        return size(root);
-    }
-
     public static int size(Node node) {
         if (node == null)
             return 0;
