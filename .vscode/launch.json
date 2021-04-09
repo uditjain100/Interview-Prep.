@@ -6,6 +6,41 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch BinaryTreeToBST",
+            "request": "launch",
+            "mainClass": "BinaryTreeToBST",
+            "projectName": "Interview Prep_decc6666"
+        },
+        {
+            "type": "java",
+            "name": "Launch BinarySearchTree",
+            "request": "launch",
+            "mainClass": "BinarySearchTree",
+            "projectName": "Interview Prep_decc6666"
+        },
+        {
+            "type": "java",
+            "name": "Launch Nlevele",
+            "request": "launch",
+            "mainClass": "Nlevele",
+            "projectName": "Interview Prep_decc6666"
+        },
+        {
+            "type": "java",
+            "name": "Launch AVLtree",
+            "request": "launch",
+            "mainClass": "AVLtree",
+            "projectName": "Interview Prep_decc6666"
+        },
+        {
+            "type": "java",
+            "name": "Launch abc",
+            "request": "launch",
+            "mainClass": "abc",
+            "projectName": "Interview Prep_decc6666"
+        },
+        {
+            "type": "java",
             "name": "Launch BSTtoMINheap",
             "request": "launch",
             "mainClass": "BSTtoMINheap",
