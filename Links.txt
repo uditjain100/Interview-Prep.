@@ -1,0 +1,13 @@
+binary tree ******************************* 
+
+https://practice.geeksforgeeks.org/problems/single-valued-subtree/1/?category[]=Tree&category[]=Tree&difficulty[]=1&page=2&query=category[]Treedifficulty[]1page2category[]Tree
+https://practice.geeksforgeeks.org/problems/largest-independent-set-problem/1/?category[]=Tree&category[]=Tree&difficulty[]=1&page=1&query=category[]Treedifficulty[]1page1category[]Tree
+https://practice.geeksforgeeks.org/problems/burning-tree/1/?category[]=Tree&category[]=Tree&difficulty[]=2&page=1&query=category[]Treedifficulty[]2category[]Treepage1
+https://practice.geeksforgeeks.org/problems/distribute-candies-in-a-binary-tree/1/?category[]=Tree&category[]=Tree&difficulty[]=2&page=1&query=category[]Treedifficulty[]2category[]Treepage1
+https://www.geeksforgeeks.org/construct-tree-inorder-level-order-traversals/
+https://www.geeksforgeeks.org/construct-full-binary-tree-using-preorder-traversal-preorder-traversal-mirror-tree/
+https://www.geeksforgeeks.org/convert-ternary-expression-binary-tree/
+https://www.geeksforgeeks.org/minimum-swap-required-convert-binary-tree-binary-search-tree/
+https://www.geeksforgeeks.org/check-binary-tree-subtree-another-binary-tree-set-2/
+https://www.geeksforgeeks.org/check-binary-tree-contains-duplicate-subtrees-size-2/
+https://www.geeksforgeeks.org/check-if-removing-an-edge-can-divide-a-binary-tree-in-two-halves/

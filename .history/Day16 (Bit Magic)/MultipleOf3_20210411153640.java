@@ -1,0 +1,26 @@
+public class MultipleOf3 {
+
+    public static boolean check(int num) {
+        int o = 0;
+        int e = 0;
+        int i = 0;
+
+        while (num != 0) {
+            if ((num & 1) == 1)
+                if (i % 2 == 0)
+                    e++;
+                else
+                    o++;
+            num >>= 1;
+            i++;
+        }
+        if (Math.abs(e - o) % 3 == 0)
+            return true;
+        return false;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(check(54 * 54));
+    }
+
+}

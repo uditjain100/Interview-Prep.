@@ -1,5 +1,6 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
   "title": "Intro",
-  "steps": []
+  "steps": [],
+  "ref": "master"
 }

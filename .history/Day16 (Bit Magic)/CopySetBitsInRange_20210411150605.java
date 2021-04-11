@@ -1,0 +1,23 @@
+public class CopySetBitsInRange {
+
+    // *** https://www.geeksforgeeks.org/copy-set-bits-in-a-range/
+
+    public static void filter(int a, int b, int l, int r) {
+        int mask = 0;
+        for (int i = l - 1; i < r; i++)
+            mask |= (1 << i);
+
+        int req = a & mask;
+
+        mask = Integer.MAX_VALUE;
+        for (int i = l - 1; i < r; i++)
+            mask ^= (1 << i);
+        b &= mask;
+        b |= req;
+    }
+
+    public static void main(String[] args) {
+        filter(10, 15, 2, 3);
+    }
+
+}
