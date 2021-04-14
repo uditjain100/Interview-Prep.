@@ -21,16 +21,6 @@ public class LinkedList {
         this.size = 0;
     }
 
-    public int length(Node head) {
-        Node curr = head;
-        int count = 0;
-        while (curr != null) {
-            curr = curr.next;
-            count++;
-        }
-        return count;
-    }
-
     public void addFirst(int data) {
         if (this.root == null) {
             this.root = new Node(data);
@@ -256,10 +246,6 @@ public class LinkedList {
 
     public void mergeSort() {
         this.root = customMergeSort(this.root);
-        Node curr = this.root;
-        while (curr.next != null)
-            curr = curr.next;
-        this.tail = curr;
     }
 
     public Node customMergeSort(Node head) {
@@ -300,71 +286,11 @@ public class LinkedList {
             return;
 
         Node first = this.getAt(this.size - d - 1);
+        System.out.println(first.data);
         this.tail.next = this.root;
         this.root = first.next;
         this.tail = first;
         first.next = null;
-    }
-
-    public Node rotateListGroupwise(Node head, int k, int d) {
-
-        int len = this.length(head);
-        if (k > len)
-            return head;
-
-        Node res = head;
-
-        int count = len / k;
-
-        Node oh = head;
-        Node ot = null;
-
-        Node h = head;
-
-        while (count-- > 0) {
-            int tk = k - 1;
-            Node t = oh;
-            while (tk-- > 0)
-                t = t.next;
-            h = t.next;
-            t.next = null;
-
-            Node[] np = customRotate(oh, t, k, d);
-
-            oh = h;
-            if (ot == null)
-                res = np[0];
-            else
-                ot.next = np[0];
-            ot = np[1];
-        }
-
-        if (oh != null) {
-            Node t = oh;
-            while (t.next != null)
-                t = t.next;
-            Node[] np = customRotate(oh, t, len % k, d);
-            ot.next = np[0];
-        }
-
-        return res;
-    }
-
-    public Node[] customRotate(Node head, Node tail, int len, int d) {
-        if (head == null || head.next == null || d >= len)
-            return new Node[] { head, tail };
-
-        Node curr = head;
-        int count = len - d - 1;
-        while (count-- > 0)
-            curr = curr.next;
-
-        tail.next = head;
-        head = curr.next;
-        tail = curr;
-        curr.next = null;
-
-        return new Node[] { head, tail };
     }
 
     public static void main(String[] args) {
@@ -375,17 +301,11 @@ public class LinkedList {
         list.addLast(1);
         list.addLast(12);
         list.addLast(-2);
-        list.addLast(-50);
-        list.addLast(-23);
-        list.addLast(-10);
-        list.addLast(-12);
-        list.addLast(2);
         list.display();
-        list.mergeSort();
+        list.customMergeSort(list.root);
         list.display();
-        // list.rotateList(2);
-        // list.display();
-        list.customDisplay(list.rotateListGroupwise(list.root, 4, 2));
+        list.rotateList(2);
+        list.display();
     }
 
 }

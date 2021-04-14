@@ -344,15 +344,17 @@ public class LinkedList {
             while (t.next != null)
                 t = t.next;
             Node[] np = customRotate(oh, t, len % k, d);
-            ot.next = np[0];
+            ot.next = np[1];
         }
 
         return res;
     }
 
     public Node[] customRotate(Node head, Node tail, int len, int d) {
-        if (head == null || head.next == null || d >= len)
+        if (head == null || head.next == null)
             return new Node[] { head, tail };
+
+        d %= len;
 
         Node curr = head;
         int count = len - d - 1;
@@ -383,9 +385,9 @@ public class LinkedList {
         list.display();
         list.mergeSort();
         list.display();
-        // list.rotateList(2);
-        // list.display();
-        list.customDisplay(list.rotateListGroupwise(list.root, 4, 2));
+        list.rotateList(2);
+        list.display();
+        list.customDisplay(list.rotateListGroupwise(list.root, 2, 1));
     }
 
 }

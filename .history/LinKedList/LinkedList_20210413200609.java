@@ -323,13 +323,13 @@ public class LinkedList {
 
         while (count-- > 0) {
             int tk = k - 1;
-            Node t = oh;
+            Node curr = oh;
             while (tk-- > 0)
-                t = t.next;
-            h = t.next;
-            t.next = null;
+                curr = curr.next;
+            h = curr.next;
+            curr.next = null;
 
-            Node[] np = customRotate(oh, t, k, d);
+            Node[] np = customRotate(oh, curr, k, d);
 
             oh = h;
             if (ot == null)
@@ -338,20 +338,11 @@ public class LinkedList {
                 ot.next = np[0];
             ot = np[1];
         }
-
-        if (oh != null) {
-            Node t = oh;
-            while (t.next != null)
-                t = t.next;
-            Node[] np = customRotate(oh, t, len % k, d);
-            ot.next = np[0];
-        }
-
         return res;
     }
 
     public Node[] customRotate(Node head, Node tail, int len, int d) {
-        if (head == null || head.next == null || d >= len)
+        if (head == null || head.next == null)
             return new Node[] { head, tail };
 
         Node curr = head;
@@ -375,17 +366,11 @@ public class LinkedList {
         list.addLast(1);
         list.addLast(12);
         list.addLast(-2);
-        list.addLast(-50);
-        list.addLast(-23);
-        list.addLast(-10);
-        list.addLast(-12);
-        list.addLast(2);
         list.display();
         list.mergeSort();
         list.display();
-        // list.rotateList(2);
-        // list.display();
-        list.customDisplay(list.rotateListGroupwise(list.root, 4, 2));
+        list.rotateList(2);
+        list.display();
     }
 
 }

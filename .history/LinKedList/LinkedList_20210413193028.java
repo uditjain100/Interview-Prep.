@@ -29,6 +29,7 @@ public class LinkedList {
             count++;
         }
         return count;
+
     }
 
     public void addFirst(int data) {
@@ -306,65 +307,16 @@ public class LinkedList {
         first.next = null;
     }
 
-    public Node rotateListGroupwise(Node head, int k, int d) {
+    public static void rotateListGroupwise(Node head int k , int d){
 
-        int len = this.length(head);
-        if (k > len)
-            return head;
 
-        Node res = head;
 
-        int count = len / k;
-
-        Node oh = head;
-        Node ot = null;
-
-        Node h = head;
-
-        while (count-- > 0) {
-            int tk = k - 1;
-            Node t = oh;
-            while (tk-- > 0)
-                t = t.next;
-            h = t.next;
-            t.next = null;
-
-            Node[] np = customRotate(oh, t, k, d);
-
-            oh = h;
-            if (ot == null)
-                res = np[0];
-            else
-                ot.next = np[0];
-            ot = np[1];
-        }
-
-        if (oh != null) {
-            Node t = oh;
-            while (t.next != null)
-                t = t.next;
-            Node[] np = customRotate(oh, t, len % k, d);
-            ot.next = np[0];
-        }
-
-        return res;
     }
 
-    public Node[] customRotate(Node head, Node tail, int len, int d) {
-        if (head == null || head.next == null || d >= len)
-            return new Node[] { head, tail };
+    public static Node customRotate(Node head, int k, int d) {
+        if (head == null || head.next == null)
+            return head;
 
-        Node curr = head;
-        int count = len - d - 1;
-        while (count-- > 0)
-            curr = curr.next;
-
-        tail.next = head;
-        head = curr.next;
-        tail = curr;
-        curr.next = null;
-
-        return new Node[] { head, tail };
     }
 
     public static void main(String[] args) {
@@ -375,17 +327,11 @@ public class LinkedList {
         list.addLast(1);
         list.addLast(12);
         list.addLast(-2);
-        list.addLast(-50);
-        list.addLast(-23);
-        list.addLast(-10);
-        list.addLast(-12);
-        list.addLast(2);
         list.display();
         list.mergeSort();
         list.display();
-        // list.rotateList(2);
-        // list.display();
-        list.customDisplay(list.rotateListGroupwise(list.root, 4, 2));
+        list.rotateList(2);
+        list.display();
     }
 
 }

@@ -1,12 +1,13 @@
-public class LinkedList {
+public class DoublyLL {
 
     public class Node {
         int data;
+        Node prev;
         Node next;
 
         public Node(int data) {
             this.data = data;
-            this.next = null;
+            this.prev = this.next = null;
         }
     }
 
@@ -15,20 +16,10 @@ public class LinkedList {
 
     public int size;
 
-    public LinkedList() {
+    public DoublyLL() {
         this.root = null;
         this.tail = null;
         this.size = 0;
-    }
-
-    public int length(Node head) {
-        Node curr = head;
-        int count = 0;
-        while (curr != null) {
-            curr = curr.next;
-            count++;
-        }
-        return count;
     }
 
     public void addFirst(int data) {
@@ -39,6 +30,7 @@ public class LinkedList {
             Node nn = new Node(data);
             nn.next = this.root;
             this.root = nn;
+            nn.next.prev = nn;
         }
         this.size++;
     }
@@ -50,6 +42,7 @@ public class LinkedList {
         } else {
             Node nn = new Node(data);
             this.tail.next = nn;
+            nn.prev = this.tail;
             this.tail = nn;
         }
         this.size++;
@@ -65,7 +58,9 @@ public class LinkedList {
             Node prev = this.getAt(idx - 1);
             Node nxt = prev.next;
             prev.next = nn;
+            nn.prev = prev;
             nn.next = nxt;
+            nxt.prev = nn;
             this.size++;
         }
     }
@@ -96,6 +91,8 @@ public class LinkedList {
             return null;
         else {
             Node rn = this.root;
+            if (this.root.next != null)
+                this.root.next.prev = null;
             this.root = this.root.next;
             rn.next = null;
             this.size--;
@@ -109,6 +106,8 @@ public class LinkedList {
         else {
             Node prev = this.getAt(size - 2);
             Node rn = prev.next;
+            this.tail = prev;
+            rn.prev = null;
             prev.next = null;
             this.size--;
             return rn;
@@ -123,7 +122,10 @@ public class LinkedList {
         else {
             Node prev = this.getAt(idx - 1);
             Node rn = prev.next;
-            prev.next = rn.next;
+            Node nxt = rn.next;
+            prev.next = nxt;
+            nxt.prev = prev;
+            rn.next = rn.prev = null;
             this.size--;
             return rn;
         }
@@ -161,42 +163,34 @@ public class LinkedList {
         if (this.root == null || this.root.next == null)
             return;
 
-        Node prev = null;
         Node curr = this.root;
-        Node next = curr.next;
 
-        while (curr.next != null) {
-            curr.next = prev;
-
-            prev = curr;
-            curr = next;
-            next = next.next;
+        while (curr != null) {
+            Node temp = curr.next;
+            curr.next = curr.prev;
+            curr.prev = temp;
+            curr = curr.prev;
         }
-        curr.next = prev;
 
-        prev = this.root;
+        Node temp = this.root;
         this.root = this.tail;
-        this.tail = prev;
+        this.tail = temp;
     }
 
     public Node customReverse(Node head) {
         if (head == null || head.next == null)
             return head;
 
-        Node prev = null;
         Node curr = head;
-        Node next = curr.next;
 
-        while (curr.next != null) {
-            curr.next = prev;
-
-            prev = curr;
-            curr = next;
-            next = next.next;
+        while (curr != null) {
+            Node temp = curr.next;
+            curr.next = curr.prev;
+            curr.prev = temp;
+            curr = curr.prev;
         }
-        curr.next = prev;
-        head = curr;
-        return head;
+
+        return curr;
     }
 
     public void reverseData() {
@@ -243,6 +237,7 @@ public class LinkedList {
                 temp.next = curr2;
                 curr2 = curr2.next;
             }
+            temp.next.prev = temp;
             temp = temp.next;
         }
 
@@ -250,16 +245,10 @@ public class LinkedList {
             temp.next = curr1;
         if (curr2 != null)
             temp.next = curr2;
+        if (temp.next != null)
+            temp.next.prev = temp;
 
         return resNode.next;
-    }
-
-    public void mergeSort() {
-        this.root = customMergeSort(this.root);
-        Node curr = this.root;
-        while (curr.next != null)
-            curr = curr.next;
-        this.tail = curr;
     }
 
     public Node customMergeSort(Node head) {
@@ -268,6 +257,7 @@ public class LinkedList {
 
         Node midNode = customMidPoint(head);
         Node newHead = midNode.next;
+        midNode.next.prev = null;
         midNode.next = null;
 
         return mergeLists(customMergeSort(head), customMergeSort(newHead));
@@ -277,115 +267,11 @@ public class LinkedList {
         Node curr = this.root;
         System.out.println("*************************");
         while (curr != null) {
-            System.out.print(curr.data + " => ");
+            System.out.print(curr.data + " <=> ");
             curr = curr.next;
         }
-        System.out.println();
+        System.out.print("null" + "\n");
         System.out.println("*************************");
-    }
-
-    public void customDisplay(Node head) {
-        Node curr = head;
-        System.out.println("*************************");
-        while (curr != null) {
-            System.out.print(curr.data + " => ");
-            curr = curr.next;
-        }
-        System.out.println();
-        System.out.println("*************************");
-    }
-
-    public void rotateList(int d) {
-        if (this.root == null || this.root.next == null)
-            return;
-
-        Node first = this.getAt(this.size - d - 1);
-        this.tail.next = this.root;
-        this.root = first.next;
-        this.tail = first;
-        first.next = null;
-    }
-
-    public Node rotateListGroupwise(Node head, int k, int d) {
-
-        int len = this.length(head);
-        if (k > len)
-            return head;
-
-        Node res = head;
-
-        int count = len / k;
-
-        Node oh = head;
-        Node ot = null;
-
-        Node h = head;
-
-        while (count-- > 0) {
-            int tk = k - 1;
-            Node t = oh;
-            while (tk-- > 0)
-                t = t.next;
-            h = t.next;
-            t.next = null;
-
-            Node[] np = customRotate(oh, t, k, d);
-
-            oh = h;
-            if (ot == null)
-                res = np[0];
-            else
-                ot.next = np[0];
-            ot = np[1];
-        }
-
-        if (oh != null) {
-            Node t = oh;
-            while (t.next != null)
-                t = t.next;
-            Node[] np = customRotate(oh, t, len % k, d);
-            ot.next = np[0];
-        }
-
-        return res;
-    }
-
-    public Node[] customRotate(Node head, Node tail, int len, int d) {
-        if (head == null || head.next == null || d >= len)
-            return new Node[] { head, tail };
-
-        Node curr = head;
-        int count = len - d - 1;
-        while (count-- > 0)
-            curr = curr.next;
-
-        tail.next = head;
-        head = curr.next;
-        tail = curr;
-        curr.next = null;
-
-        return new Node[] { head, tail };
-    }
-
-    public static void main(String[] args) {
-
-        LinkedList list = new LinkedList();
-        list.addLast(50);
-        list.addLast(23);
-        list.addLast(1);
-        list.addLast(12);
-        list.addLast(-2);
-        list.addLast(-50);
-        list.addLast(-23);
-        list.addLast(-10);
-        list.addLast(-12);
-        list.addLast(2);
-        list.display();
-        list.mergeSort();
-        list.display();
-        // list.rotateList(2);
-        // list.display();
-        list.customDisplay(list.rotateListGroupwise(list.root, 4, 2));
     }
 
 }

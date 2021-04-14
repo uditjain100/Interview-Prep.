@@ -306,52 +306,29 @@ public class LinkedList {
         first.next = null;
     }
 
-    public Node rotateListGroupwise(Node head, int k, int d) {
+    public Node rotateListGroupwise(Node head int k , int d){
 
         int len = this.length(head);
-        if (k > len)
-            return head;
-
-        Node res = head;
-
+        if(k > len) return head;
+        
         int count = len / k;
-
-        Node oh = head;
-        Node ot = null;
-
         Node h = head;
-
-        while (count-- > 0) {
+        Node t = head;
+            for(int i = 0 ; i < count ; i++) {
             int tk = k - 1;
-            Node t = oh;
-            while (tk-- > 0)
-                t = t.next;
-            h = t.next;
-            t.next = null;
+            while(tk-- > 0)
+                tail = tail.next;
+            Node nextHead = tail.next;
+            tail.next = null;
 
-            Node[] np = customRotate(oh, t, k, d);
 
-            oh = h;
-            if (ot == null)
-                res = np[0];
-            else
-                ot.next = np[0];
-            ot = np[1];
         }
 
-        if (oh != null) {
-            Node t = oh;
-            while (t.next != null)
-                t = t.next;
-            Node[] np = customRotate(oh, t, len % k, d);
-            ot.next = np[0];
-        }
 
-        return res;
     }
 
     public Node[] customRotate(Node head, Node tail, int len, int d) {
-        if (head == null || head.next == null || d >= len)
+        if (head == null || head.next == null)
             return new Node[] { head, tail };
 
         Node curr = head;
@@ -375,17 +352,11 @@ public class LinkedList {
         list.addLast(1);
         list.addLast(12);
         list.addLast(-2);
-        list.addLast(-50);
-        list.addLast(-23);
-        list.addLast(-10);
-        list.addLast(-12);
-        list.addLast(2);
         list.display();
         list.mergeSort();
         list.display();
-        // list.rotateList(2);
-        // list.display();
-        list.customDisplay(list.rotateListGroupwise(list.root, 4, 2));
+        list.rotateList(2);
+        list.display();
     }
 
 }

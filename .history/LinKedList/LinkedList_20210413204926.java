@@ -344,7 +344,7 @@ public class LinkedList {
             while (t.next != null)
                 t = t.next;
             Node[] np = customRotate(oh, t, len % k, d);
-            ot.next = np[0];
+            ot.next = np[1];
         }
 
         return res;
