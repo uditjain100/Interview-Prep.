@@ -399,10 +399,6 @@ public class LinkedList {
             curr = curr.next;
         }
         this.root = this.root.next;
-        curr = this.root;
-        while (curr.next != null)
-            curr = curr.next;
-        this.tail = curr;
     }
 
     public static void main(String[] args) {

@@ -368,15 +368,21 @@ public class LinkedList {
     }
 
     public void sortedInsert(int data) {
-        sortedInsert(data, this.root);
+        this.root = sortedInsert(data, this.root);
+        Node curr = this.root;
+        while (curr.next != null)
+            curr = curr.next;
+        this.tail = curr;
     }
 
-    public void sortedInsert(int data, Node head) {
-        if (data < head.data)
+    public Node sortedInsert(int data, Node head) {
+        if (data < head.data) {
             this.addFirst(data);
-        else if (data > this.tail.data)
+            return this.root;
+        } else if (data > this.tail.data) {
             this.addLast(data);
-        else {
+            return this.root;
+        } else {
             int idx = 1;
             Node curr = head;
             while (curr.next != null && curr.next.data < data) {
@@ -388,21 +394,20 @@ public class LinkedList {
     }
 
     public void insertionSort() {
-        if (this.root == null || this.root.next == null)
-            return;
-
+        this.root = insertionSort(this.root);
         Node curr = this.root;
-        this.root = new Node(Integer.MIN_VALUE);
-
-        while (curr != null) {
-            sortedInsert(curr.data);
-            curr = curr.next;
-        }
-        this.root = this.root.next;
-        curr = this.root;
         while (curr.next != null)
             curr = curr.next;
         this.tail = curr;
+    }
+
+    public Node insertionSort(Node head) {
+        if (head == null || head.next == null)
+            return;
+
+        Node curr = head;
+        Node newHead = head;
+
     }
 
     public static void main(String[] args) {
@@ -420,8 +425,6 @@ public class LinkedList {
         list.addLast(2);
         list.display();
         // list.mergeSort();
-        // list.display();
-        // list.sortedInsert(0);
         // list.display();
         list.insertionSort();
         list.display();

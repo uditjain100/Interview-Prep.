@@ -389,7 +389,7 @@ public class LinkedList {
 
     public void insertionSort() {
         if (this.root == null || this.root.next == null)
-            return;
+            return this.root;
 
         Node curr = this.root;
         this.root = new Node(Integer.MIN_VALUE);
@@ -398,11 +398,8 @@ public class LinkedList {
             sortedInsert(curr.data);
             curr = curr.next;
         }
+
         this.root = this.root.next;
-        curr = this.root;
-        while (curr.next != null)
-            curr = curr.next;
-        this.tail = curr;
     }
 
     public static void main(String[] args) {

@@ -367,42 +367,17 @@ public class LinkedList {
         return new Node[] { head, tail };
     }
 
-    public void sortedInsert(int data) {
-        sortedInsert(data, this.root);
-    }
-
-    public void sortedInsert(int data, Node head) {
-        if (data < head.data)
-            this.addFirst(data);
-        else if (data > this.tail.data)
-            this.addLast(data);
-        else {
-            int idx = 1;
-            Node curr = head;
-            while (curr.next != null && curr.next.data < data) {
-                curr = curr.next;
-                idx++;
-            }
-            this.addAt(idx, data);
-        }
-    }
-
     public void insertionSort() {
-        if (this.root == null || this.root.next == null)
+        insertionSort(this.root);
+    }
+
+    public void insertionSort(Node head) {
+        if (head == null || head.next == null)
             return;
 
-        Node curr = this.root;
-        this.root = new Node(Integer.MIN_VALUE);
+        Node curr = head;
+        Node newHead = head;
 
-        while (curr != null) {
-            sortedInsert(curr.data);
-            curr = curr.next;
-        }
-        this.root = this.root.next;
-        curr = this.root;
-        while (curr.next != null)
-            curr = curr.next;
-        this.tail = curr;
     }
 
     public static void main(String[] args) {
@@ -420,8 +395,6 @@ public class LinkedList {
         list.addLast(2);
         list.display();
         // list.mergeSort();
-        // list.display();
-        // list.sortedInsert(0);
         // list.display();
         list.insertionSort();
         list.display();
