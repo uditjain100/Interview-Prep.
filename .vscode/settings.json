@@ -2,7 +2,8 @@
     "editor.fontFamily": "Montserrut, Consolas, 'Courier New', monospace",
     "editor.fontSize": 20,
     "java.project.sourcePaths": [
+        "Day21",
         "Day20 (Heap)",
-        "Day21"
+        "Arrays"
     ]
 }
